@@ -2,3 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+@layer base {
+	@font-face {
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 300;
+		src: url('/src/Poppins/Poppins-Light.ttf');
+	}
+
+	@font-face {
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/src/Poppins/Poppins-Regular.ttf');
+	}
+
+	@font-face {
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 500;
+		src: url('/src/Poppins/Poppins-Medium.ttf');
+	}
+
+	@font-face {
+		font-family: 'Poppins';
+		font-style: normal;
+		font-weight: 600;
+		src: url('/src/Poppins/Poppins-SemiBold.ttf');
+	}
+}
+
+@layer components {
+	/* Navigation */
+	.nav-card {
+		@apply h-1/4 bg-[#333333] rounded-sm block text-lg font-semibold table;
+	}
+
+	.nav-link {
+		@apply table-cell align-middle text-center;
+	}
+
+	.nav-icon {
+		@apply text-warning-500 mb-[10px] mt-[6px] block text-2xl;
+	}
+}
