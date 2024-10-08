@@ -26,3 +26,4 @@ resource "aws_route53_record" "static_website_record" {
     evaluate_target_health = true
   }
 }
+
