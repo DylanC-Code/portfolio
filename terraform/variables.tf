@@ -3,9 +3,14 @@ variable "s3_bucket_name" {
   description = "Name of the AWS s3 bucket who the static website will be stored"
 }
 
-variable "s3_domain_name" {
+variable "domain_name" {
   type        = string
   description = "Name of the AWS Route53 hosted zone domain"
+}
+
+variable "sub_domain" {
+  type    = string
+  default = ""
 }
 
 variable "aws_region" {
