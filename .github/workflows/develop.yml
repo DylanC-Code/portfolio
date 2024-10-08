@@ -26,14 +26,14 @@ jobs:
           cache: pnpm
 
       - name: Clean install
-        run: pnpm
+        run: pnpm i
 
       - name: Build
         run: pnpm build
 
       - name: Deploy Infra
-        if: ${{ !contains(github.event.head_commit.message, 'chore(infra):') }}
-        run: terraform apply
+        if: ${{ contains(github.event.head_commit.message, 'chore(infra):') }}
+        run: terraform apply -auto-approve # TODO: build backend config and pass it in arguments
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
