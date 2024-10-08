@@ -53,3 +53,17 @@ resource "aws_s3_bucket_website_configuration" "name" {
     host_name = var.bucket_name
   }
 }
+
+resource "aws_s3_bucket_public_access_block" "www_public_access_block" {
+  bucket = aws_s3_bucket.www_bucket.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_policy" "www_bucket_policy" {
+  bucket = aws_s3_bucket.www_bucket.id
+  policy = templatefile("./s3_static_website_buckets/s3-policy.json", { bucket : "www.${var.bucket_name}" })
+}
