@@ -11,7 +11,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				'poppins': ['poppins']
+				'poppins': ['poppins'],
+				'awesome': ['FontAwesome']
 			}
 		},
 	},

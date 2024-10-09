@@ -1,4 +1,8 @@
 <script lang="ts">
+	import FullScreenNav from '../lib/Nav/FullScreenNav/FullScreenNav.svelte';
+
+	import StickyNav from '../lib/Nav/StickyNav/StickyNav.svelte';
+
 	import '../app.postcss';
 
 	// Highlight JS
@@ -21,5 +25,13 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
+
+<header>
+	<nav class="font-poppins font-semibold uppercase text-white">
+		<FullScreenNav />
+
+		<StickyNav />
+	</nav>
+</header>
 
 <slot />

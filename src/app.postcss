@@ -8,28 +8,28 @@
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 300;
-		src: url('/src/Poppins/Poppins-Light.ttf');
+		src: url('src/Poppins/Poppins-Light.ttf');
 	}
 
 	@font-face {
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 400;
-		src: url('/src/Poppins/Poppins-Regular.ttf');
+		src: url('src/Poppins/Poppins-Regular.ttf');
 	}
 
 	@font-face {
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 500;
-		src: url('/src/Poppins/Poppins-Medium.ttf');
+		src: url('src/Poppins/Poppins-Medium.ttf');
 	}
 
 	@font-face {
 		font-family: 'Poppins';
 		font-style: normal;
 		font-weight: 600;
-		src: url('/src/Poppins/Poppins-SemiBold.ttf');
+		src: url('src/Poppins/Poppins-SemiBold.ttf');
 	}
 }
 
@@ -45,5 +45,15 @@
 
 	.nav-icon {
 		@apply text-warning-500 mb-[10px] mt-[6px] block text-2xl;
+	}
+
+	/* Burger */
+	.burger-span {
+		@apply w-4 h-[2px] bg-white absolute -translate-x-1/2 -translate-y-1/2 transition ease-in-out duration-200;
+	}
+
+	/* Sticky Nav */
+	.sticky-nav-link {
+		@apply relative grid grid-cols-[60px_60px] h-[50px] items-center;
 	}
 }
