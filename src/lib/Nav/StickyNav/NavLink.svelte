@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { linear } from 'svelte/easing';
-	import { fade, scale } from 'svelte/transition';
+	import { scale } from 'svelte/transition';
+	import { _currentPage } from '../../../routes/+layout';
 
 	export let delay: number;
 	export let text: string;
 	export let iconName: string;
 
-	let liItem: HTMLLIElement;
 	let mounted: boolean;
 
-	const href = `#${text.toLowerCase()}`;
+	const lowerCaseText = text.toLowerCase();
+	const href = `#${lowerCaseText}`;
 
-	$: currentRoute = $page.url.hash === href;
+	const setPage = _currentPage.createPageSetter(lowerCaseText);
 
 	function animateTick(node: Element) {
 		return {
@@ -27,10 +27,14 @@
 	}
 
 	onMount(() => (mounted = true));
+
+	$: currentRoute = lowerCaseText === $_currentPage;
 </script>
 
-<li bind:this={liItem} class:text-red-500={currentRoute && mounted}>
-	<a {href} class="sticky-nav-link">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+<li class:text-red-500={currentRoute && mounted}>
+	<a {href} class="sticky-nav-link" on:click={setPage}>
 		<i
 			class="fa fa-{iconName} fa-sm font-awesome mx-auto relative"
 			class:opacity-60={!currentRoute}
