@@ -9,7 +9,7 @@
 	let thirdSpanElement: HTMLSpanElement;
 
 	function animateBurger(navVisible: boolean) {
-		if (!secondSpanElement) return;
+		if (!firstSpanElement) return;
 
 		const centerElement = 'translate(-50%, -50%) ';
 
