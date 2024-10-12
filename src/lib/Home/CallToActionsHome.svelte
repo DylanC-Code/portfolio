@@ -12,7 +12,7 @@
 			</span>
 		</a>
 
-		<a href="#work" class="bg-transparent border border-{$_selectedColor} btn">
+		<a href="#portfolio" class="bg-transparent border border-{$_selectedColor} btn">
 			<div class="bg-{$_selectedColor}"></div>
 			<span class="text-{$_selectedColor}">
 				<i class="fa fa-suitcase text-{$_selectedColor}"></i>
