@@ -25,3 +25,5 @@ export const _currentPage = {
 	set: currentPage.set,
 	createPageSetter: (value: string) => () => currentPage.set(value)
 };
+
+export const _selectedColor = writable('warning-500');

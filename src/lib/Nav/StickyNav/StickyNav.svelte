@@ -2,19 +2,13 @@
 	import Burger from './Burger.svelte';
 	import NavLink from './NavLink.svelte';
 
-	let navContainer: HTMLDivElement;
-
 	let visible = false;
 	const toggleNavVisibility = () => (visible = !visible);
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-	class="invisible md:visible z-20 fixed top-[30px] left-[30px]"
-	bind:this={navContainer}
-	on:click={toggleNavVisibility}
->
+<div class="invisible md:visible z-20 fixed top-[30px] left-[30px]" on:click={toggleNavVisibility}>
 	<Burger {visible} />
 
 	<!-- {#if visible} -->

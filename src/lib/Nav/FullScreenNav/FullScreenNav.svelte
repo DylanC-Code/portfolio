@@ -4,7 +4,7 @@
 	const changePageHandler = (pageName: string) => () => _currentPage.set(pageName);
 </script>
 
-<div class="md:hidden">
+<div class="md:hidden" class:hidden={$_currentPage !== 'home'}>
 	<ul class="flex flex-col h-screen p-6 gap-6">
 		<li class="nav-card">
 			<a href="#about" class="nav-link" on:click={changePageHandler('about')}>
