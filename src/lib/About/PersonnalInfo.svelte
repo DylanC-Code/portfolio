@@ -96,7 +96,11 @@
 				<section
 					class="flex-[0_0_100%] max-w-full relative w-full px-4 md:text-center lg:text-left"
 				>
-					<a href="#" class="mt-4 mb-9 bg-{$_selectedColor} btn sm:mt-8 sm:mb-0">
+					<a
+						href="/cv.pdf"
+						target="_blank"
+						class="mt-4 mb-9 bg-{$_selectedColor} btn sm:mt-8 sm:mb-0"
+					>
 						<div class="bg-[#555]"></div>
 						<span><i class="fa fa-download"></i>download my cv</span>
 					</a>
