@@ -1,9 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
-	import { _currentPage } from './+layout';
 	import { browser } from '$app/environment';
-	import Home from '../lib/Home/Home.svelte';
-	import About from '$lib/About/About.svelte';
+	import About from '$lib/components/About/About.svelte';
+	import Home from '$lib/components/Home/Home.svelte';
+	import Contact from '$lib/components/Contact/Contact.svelte';
 
 	onMount(() => {
 		if (!browser) return;
@@ -25,8 +25,8 @@
 
 				const id = el.hash.replace('#', '');
 				if (!id) return;
-
-				document.getElementById(id).classList.add('page-section-active');
+				const sectionEl = document.getElementById(id);
+				if (sectionEl) sectionEl.classList.add('page-section-active');
 			});
 		});
 	});
@@ -34,6 +34,6 @@
 
 <Home />
 <About />
+<Contact />
 <section id="portfolio" class="page-section">aaa</section>
-<section id="contact" class="page-section"></section>
 <section id="blog" class="page-section"></section>

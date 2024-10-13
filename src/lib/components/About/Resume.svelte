@@ -1,8 +1,6 @@
 <script>
 	import Experiences from './Experiences.svelte';
 
-	import { _selectedColor } from '../../routes/+layout';
-
 	const skillsImagesName = [
 		'nodejs.svg',
 		'python.svg',

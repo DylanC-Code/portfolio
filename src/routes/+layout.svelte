@@ -1,8 +1,6 @@
 <script lang="ts">
-	import FullScreenNav from '../lib/Nav/FullScreenNav/FullScreenNav.svelte';
-
-	import StickyNav from '../lib/Nav/StickyNav/StickyNav.svelte';
-
+	import FullScreenNav from '$lib/components/Nav/FullScreenNav/FullScreenNav.svelte';
+	import StickyNav from '$lib/components/Nav/StickyNav/StickyNav.svelte';
 	import '../app.postcss';
 
 	// // Highlight JS

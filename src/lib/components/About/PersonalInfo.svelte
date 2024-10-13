@@ -1,5 +1,8 @@
 <script>
-	import { _selectedColor } from '../../routes/+layout';
+	import selectedColor from '$lib/stores/selectedColor';
+	import Button from '../Button/Button.svelte';
+
+	const openCVHandler = () => window.open('/cv.pdf', '_blank');
 </script>
 
 <div class="xl:w-full lg:px-7 mx-auto max-w-[1170px]">
@@ -10,7 +13,7 @@
 			>
 				<div class="image-container">
 					<div
-						class="hidden sm:inline-block border-[6px] border-{$_selectedColor} inline-block absolute top-0 right-0 bottom-0 left-0 -z-10"
+						class="hidden sm:inline-block border-[6px] border-{$selectedColor} inline-block absolute top-0 right-0 bottom-0 left-0 -z-10"
 					></div>
 					<img
 						src="dark-about.png"
@@ -96,14 +99,12 @@
 				<section
 					class="flex-[0_0_100%] max-w-full relative w-full px-4 md:text-center lg:text-left"
 				>
-					<a
-						href="/cv.pdf"
-						target="_blank"
-						class="mt-4 mb-9 bg-{$_selectedColor} btn sm:mt-8 sm:mb-0"
-					>
-						<div class="bg-[#555]"></div>
-						<span><i class="fa fa-download"></i>download my cv</span>
-					</a>
+					<Button
+						on:click={openCVHandler}
+						logo="download"
+						text="download my cv"
+						classes="mt-4 mb-9 sm:mt-8 sm:mb-0"
+					></Button>
 				</section>
 			</div>
 		</div>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { _selectedColor } from '../../routes/+layout';
 	import CallToActionsHome from './CallToActionsHome.svelte';
 </script>
 

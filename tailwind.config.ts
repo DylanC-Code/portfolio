@@ -14,6 +14,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
+				sans: ['poppins'],
 				poppins: ['poppins'],
 				awesome: ['FontAwesome'],
 				openSans: ['Open Sans']
@@ -22,8 +23,9 @@ export default {
 	},
 	safelist: [
 		{
-			pattern: /(bg|text|border)-.*(-500)?/
-		},
+			pattern: /(bg|text|border)-.*(-500)?/,
+			variants: ['hover']
+		}
 	],
 	plugins: [
 		forms,

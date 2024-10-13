@@ -1,8 +1,8 @@
 <script lang="ts">
+	import currentPage from '$lib/stores/currentPage';
 	import { onMount } from 'svelte';
 	import { linear } from 'svelte/easing';
 	import { scale } from 'svelte/transition';
-	import { _currentPage } from '../../../routes/+layout';
 
 	export let delay: number;
 	export let text: string;
@@ -13,7 +13,7 @@
 	const lowerCaseText = text.toLowerCase();
 	const href = `#${lowerCaseText}`;
 
-	const setPage = _currentPage.createPageSetter(lowerCaseText);
+	const setPage = currentPage.createPageSetter(lowerCaseText);
 
 	function animateTick(node: Element) {
 		return {
@@ -28,7 +28,7 @@
 
 	onMount(() => (mounted = true));
 
-	$: currentRoute = lowerCaseText === $_currentPage;
+	$: currentRoute = lowerCaseText === $currentPage;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->

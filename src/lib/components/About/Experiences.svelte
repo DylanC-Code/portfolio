@@ -1,18 +1,18 @@
 <script>
-	import { _selectedColor } from '../../routes/+layout';
+	import selectedColor from "$lib/stores/selectedColor";
 </script>
 
 <div class="relative w-full px-4 md:max-w-[50%] md:flex-[0_0_50%]">
 	<h2 class="mb-12 text-2xl font-semibold uppercase font-poppins">Experience</h2>
 	<ul>
 		<li>
-			<span class="border-l-{$_selectedColor} line"></span>
-			<span class="border-{$_selectedColor} bullet"></span>
+			<span class="border-l-{$selectedColor} line"></span>
+			<span class="border-{$selectedColor} bullet"></span>
 			<div class="exp-card">
 				<header>
 					<span>
 						<i class="fa fa-calendar"></i>
-						<i class="fa fa-caret-right text-{$_selectedColor}"></i>
+						<i class="fa fa-caret-right text-{$selectedColor}"></i>
 						2017 - 2019
 					</span>
 					<span class="font-poppins uppercase block">
@@ -30,13 +30,13 @@
 			</div>
 		</li>
 		<li>
-			<span class="border-l-{$_selectedColor} line"></span>
-			<span class="border-{$_selectedColor} bullet"></span>
+			<span class="border-l-{$selectedColor} line"></span>
+			<span class="border-{$selectedColor} bullet"></span>
 			<div class="exp-card">
 				<header>
 					<span>
 						<i class="fa fa-calendar"></i>
-						<i class="fa fa-caret-right text-{$_selectedColor}"></i>
+						<i class="fa fa-caret-right text-{$selectedColor}"></i>
 						2017 - 2019
 					</span>
 					<span class="font-poppins uppercase block">
@@ -54,13 +54,13 @@
 			</div>
 		</li>
 		<li>
-			<span class="border-l-{$_selectedColor} line"></span>
-			<span class="border-{$_selectedColor} bullet"></span>
+			<span class="border-l-{$selectedColor} line"></span>
+			<span class="border-{$selectedColor} bullet"></span>
 			<div class="exp-card">
 				<header>
 					<span>
 						<i class="fa fa-calendar"></i>
-						<i class="fa fa-caret-right text-{$_selectedColor}"></i>
+						<i class="fa fa-caret-right text-{$selectedColor}"></i>
 						2017 - 2019
 					</span>
 					<span class="font-poppins uppercase block">
