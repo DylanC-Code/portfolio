@@ -8,7 +8,7 @@
 			<div
 				class="relative w-full px-4 sm:max-w-full sm:flex-[0_0_100%] lg:max-w-[50%] lg:flex-[0_0_50%]"
 			>
-				<div class="relative block max-w-[440px] mx-auto">
+				<div class="image-container">
 					<div
 						class="hidden sm:inline-block border-[6px] border-{$_selectedColor} inline-block absolute top-0 right-0 bottom-0 left-0 -z-10"
 					></div>
@@ -107,7 +107,10 @@
 </div>
 
 <style>
-	div > div > div > div > div {
+	.image-container {
+		@apply relative block max-w-[440px] mx-auto;
+	}
+	.image-container > div {
 		transform: translate3d(26px, 26px, -26px);
 	}
 

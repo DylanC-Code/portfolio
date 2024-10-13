@@ -3,10 +3,6 @@
 	import CallToActionsHome from './CallToActionsHome.svelte';
 </script>
 
-<!-- <section
-	id="home"
-	class="page-section page-section-active pl-[50%] pr-80 text-white flex flex-col justify-center"
-> -->
 <section id="home" class="page-section pl-[50%] pr-80 text-white flex flex-col justify-center">
 	<h3 class="font-normal text-lg">Hi there !</h3>
 	<h1 class="text-white text-[42px] font-medium mt-[19px] mb-[10px] relative whitespace-nowrap">

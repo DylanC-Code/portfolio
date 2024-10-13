@@ -26,14 +26,14 @@
 	// storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
 
-<!-- <header class="absolute top-0 left-0 bottom-0 right-0 p-0 h-full w-full"> -->
- 
-<header class="top-0 left-0 bottom-0 right-0 p-0 h-full w-full">
-	<nav class="font-poppins font-semibold uppercase text-white">
-		<FullScreenNav />
+<div class="min-h-screen w-screen overflow-x-hidden contain-layout">
+	<header class="top-0 left-0 bottom-0 right-0 p-0 h-full w-full">
+		<nav class="font-poppins font-semibold uppercase text-white">
+			<FullScreenNav />
 
-		<StickyNav />
-	</nav>
-</header>
+			<StickyNav />
+		</nav>
+	</header>
 
-<slot />
+	<slot />
+</div>

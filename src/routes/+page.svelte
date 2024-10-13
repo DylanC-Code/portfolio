@@ -32,11 +32,8 @@
 	});
 </script>
 
-<main class="h-full w-full">
-	<Home />
-	<About />
-
-	<section id="portfolio" class="page-section">aaa</section>
-	<section id="contact" class="page-section"></section>
-	<section id="blog" class="page-section"></section>
-</main>
+<Home />
+<About />
+<section id="portfolio" class="page-section">aaa</section>
+<section id="contact" class="page-section"></section>
+<section id="blog" class="page-section"></section>

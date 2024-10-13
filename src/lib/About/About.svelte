@@ -11,7 +11,7 @@
 			about
 			<span class="text-{$_selectedColor}">me</span>
 		</h2>
-		<span class="text-white opacity-80 relative inline-block uppercase text-[15px] mt-5">
+		<span class="text-white opacity-80 relative inline-block uppercase text-[15px] mt-5 px-6">
 			<div class="bg-{$_selectedColor} right-[-50px]"></div>
 			I design and code beautiful things, and I love what I do.
 			<div class="bg-{$_selectedColor} left-[-50px]"></div>
