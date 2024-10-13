@@ -1,5 +1,5 @@
 <script lang="ts">
-	import currentPage from '$lib/stores/currentPage';
+	import currentPage, { navigator } from '$lib/stores/currentPage';
 	import { onMount } from 'svelte';
 	import { linear } from 'svelte/easing';
 	import { scale } from 'svelte/transition';
@@ -13,7 +13,7 @@
 	const lowerCaseText = text.toLowerCase();
 	const href = `#${lowerCaseText}`;
 
-	const setPage = currentPage.createPageSetter(lowerCaseText);
+	const setPage = navigator.gotoSetter(lowerCaseText);
 
 	function animateTick(node: Element) {
 		return {
@@ -34,22 +34,22 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li class:text-red-500={currentRoute && mounted}>
-	<a {href} class="sticky-nav-link" on:click={setPage}>
+	<a {href} class="relative grid h-[50px] grid-cols-[60px_60px] items-center" on:click={setPage}>
 		<i
-			class="fa fa-{iconName} fa-sm font-awesome mx-auto relative"
+			class="fa fa-{iconName} fa-sm relative mx-auto font-awesome"
 			class:opacity-60={!currentRoute}
 			in:scale={{ delay, duration: 150, start: 0 }}
 		>
 		</i>
 
 		<span
-			class="w-[3px] h-4 absolute left-[57px] top-1/2 -translate-y-1/2"
+			class="absolute left-[57px] top-1/2 h-4 w-[3px] -translate-y-1/2"
 			class:bg-red-500={currentRoute && mounted}
 			class:hidden={!currentRoute}
 			in:animateTick
 		></span>
 
-		<span class="pl-4 font-normal">{text}</span>
+		<span class="animate-[slideIn_.15s_backwards] pl-4 font-normal">{text}</span>
 	</a>
 </li>
 
@@ -65,7 +65,7 @@
 			transform: translateX(0);
 		}
 	}
-	a span:last-of-type {
+	/* a span:last-of-type {
 		animation: slideIn 0.15s backwards;
-	}
+	} */
 </style>

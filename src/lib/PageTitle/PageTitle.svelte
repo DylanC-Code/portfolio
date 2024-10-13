@@ -6,21 +6,19 @@
 	export let subTitle: string;
 </script>
 
-<header class="pt-[55px] pb-[49px] md:pt-[60px] md:pb-[54px] relative w-screen text-center">
-	<h2 class="text-[35px] md:text-[55px] uppercase font-poppins font-black px-6 leading-[1.2]">
+<header class="relative w-screen pb-[49px] pt-[55px] text-center md:pb-[54px] md:pt-[60px]">
+	<h2 class="px-6 font-poppins text-[35px] font-black uppercase leading-[1.2] md:text-[55px]">
 		<!-- <h2 class="text-[55px] uppercase font-poppins font-black px-6 leading-[1.2]"> -->
 		{titleFirstPart}
 		<span class="text-{$selectedColor}">{titleSecondPart}</span>
 	</h2>
-	<span class="text-white opacity-80 relative inline-block uppercase text-[15px] mt-5 px-6">
-		<div class="bg-{$selectedColor} right-[-50px]"></div>
+	<span class="relative mt-5 inline-block px-6 text-[15px] uppercase text-white opacity-80">
+		<div
+			class="bg-{$selectedColor} absolute right-[-50px] top-[11px] hidden h-[2px] w-[30px] lg:block"
+		></div>
 		{subTitle}
-		<div class="bg-{$selectedColor} left-[-50px]"></div>
+		<div
+			class="bg-{$selectedColor} absolute left-[-50px] top-[11px] hidden h-[2px] w-[30px] lg:block"
+		></div>
 	</span>
 </header>
-
-<style>
-	span > div {
-		@apply hidden lg:block absolute h-[2px] top-[11px] w-[30px];
-	}
-</style>

@@ -75,40 +75,24 @@
 }
 
 @layer components {
-	/* Navigation */
-	.nav-card {
-		@apply h-1/4 bg-[#333333] rounded-sm block text-lg font-semibold table;
-	}
-
-	.nav-link {
-		@apply table-cell align-middle text-center;
-	}
-
-	.nav-icon {
-		@apply text-warning-500 mb-[10px] mt-[6px] block text-2xl;
-	}
-
 	/* Burger */
 	.burger-span {
-		@apply w-4 h-[2px] bg-white absolute -translate-x-1/2 -translate-y-1/2 transition ease-in-out duration-200;
-	}
-
-	/* Sticky Nav */
-	.sticky-nav-link {
-		@apply relative grid grid-cols-[60px_60px] h-[50px] items-center;
+		@apply absolute h-[2px] w-4 -translate-x-1/2 -translate-y-1/2 bg-white transition duration-200 ease-in-out;
 	}
 
 	/* Page */
 	.page-section {
-		@apply absolute top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto opacity-0 z-0 translate-x-full;
-
-		transition: transform 0.6s ease 0.6s;
+		@apply absolute left-0 top-0 z-0 h-full w-full translate-x-full overflow-y-auto overflow-x-hidden opacity-0 delay-[.6s] duration-[.6s] ease-linear;
 	}
 
 	.page-section-active {
-		@apply z-10 opacity-100 translate-x-0;
+		@apply z-10 translate-x-0 opacity-100 transition-transform duration-[.6s] ease-linear;
+	}
 
-		transition: transform 0.6s ease;
+	/* Button */
+	button:last-of-type:hover i,
+	button:last-of-type:hover span {
+		color: white;
 	}
 
 	* {
@@ -121,6 +105,6 @@
 	h4,
 	h5,
 	h6 {
-		@apply font-openSans uppercase mb-2;
+		@apply mb-2 font-openSans uppercase;
 	}
 }

@@ -25,7 +25,7 @@
 </script>
 
 <div class="min-h-screen w-screen overflow-x-hidden contain-layout">
-	<header class="top-0 left-0 bottom-0 right-0 p-0 h-full w-full">
+	<header class="bottom-0 left-0 right-0 top-0 h-full w-full p-0">
 		<nav class="font-poppins font-semibold uppercase text-white">
 			<FullScreenNav />
 

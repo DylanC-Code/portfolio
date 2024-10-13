@@ -32,7 +32,7 @@
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <a
-	class="absolute z-30 top-0 left-0 h-[60px] w-[60px] rounded-full overflow-hidden whitespace-nowrap cursor-pointer"
+	class="absolute left-0 top-0 z-30 h-[60px] w-[60px] cursor-pointer overflow-hidden whitespace-nowrap rounded-full"
 >
 	<span
 		bind:this={firstSpanElement}

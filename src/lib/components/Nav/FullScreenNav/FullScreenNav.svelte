@@ -1,39 +1,13 @@
 <script lang="ts">
-	import currentPage from "$lib/stores/currentPage";
-
-
-
-	const changePageHandler = (pageName: string) => () => currentPage.set(pageName);
+	import currentPage from '$lib/stores/currentPage';
+	import NavCard from './NavCard/NavCard.svelte';
 </script>
 
 <div class="md:hidden" class:hidden={$currentPage !== 'home'}>
-	<ul class="flex flex-col h-screen p-6 gap-6">
-		<li class="nav-card">
-			<a href="#about" class="nav-link" on:click={changePageHandler('about')}>
-				<i class="fa fa-user nav-icon"></i>
-				<span>About me</span>
-			</a>
-		</li>
-
-		<li class="nav-card">
-			<a href="#portfolio" class="nav-link" on:click={changePageHandler('portfolio')}>
-				<i class="fa fa-briefcase nav-icon"></i>
-				<span>My portfolio</span>
-			</a>
-		</li>
-
-		<li class="nav-card">
-			<a href="#contact" class="nav-link" on:click={changePageHandler('contact')}>
-				<i class="fa fa-envelope-open nav-icon"></i>
-				<span>Get in touch</span>
-			</a>
-		</li>
-
-		<li class="nav-card">
-			<a href="#blog" class="nav-link" on:click={changePageHandler('blog')}>
-				<i class="fa fa-comments nav-icon"></i>
-				<span>My blog</span>
-			</a>
-		</li>
+	<ul class="flex h-screen flex-col gap-6 p-6">
+		<NavCard text="About me" hash="about" logo="user" />
+		<NavCard text="My portfolio" hash="portfolio" logo="briefcase" />
+		<NavCard text="Get in touch" hash="contact" logo="envelope-open" />
+		<NavCard text="My blog" hash="blog" logo="comments" />
 	</ul>
 </div>

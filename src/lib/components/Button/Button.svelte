@@ -1,35 +1,39 @@
 <script lang="ts">
-	import selectedColor from '$lib/stores/selectedColor';
+	interface IButtonClasses {
+		button?: string;
+		animateDiv?: string;
+		textSpan?: string;
+		icon?: string;
+	}
 
 	export let onClickHandler = () => {};
 	export let logo = '';
 	export let text: string;
-	export let classes = '';
+	export let elementClasses: { [K in keyof IButtonClasses]?: string };
+
+	const defaultElementClasses: IButtonClasses = {
+		button: '',
+		animateDiv: '',
+		textSpan: '',
+		icon: ''
+	};
+
+	const classes = { ...defaultElementClasses, ...elementClasses };
 </script>
 
-<button on:click={onClickHandler} class="bg-{$selectedColor} {classes}">
-	<div class="bg-[#555]"></div>
-	<span><i class="fa fa-{logo}"></i>{text}</span>
+<button
+	on:click={onClickHandler}
+	class="relative inline-block h-11 overflow-hidden rounded-[26px] px-[33px] font-poppins text-[15px] font-medium uppercase tracking-[0.5px] outline-none {classes.button}"
+>
+	<div
+		class="absolute -left-1/4 top-0 z-10 h-[102%] w-0 skew-x-[22deg] bg-[#555] duration-[.6s] {classes.animateDiv}"
+	></div>
+	<span class="relative z-20 font-poppins duration-150 {classes.textSpan}">
+		<i class="fa fa-{logo} pr-[11px] duration-150 {classes.icon}"></i>{text}
+	</span>
 </button>
 
 <style>
-	button {
-		@apply text-[15px] font-medium rounded-[26px] h-11 uppercase px-[33px] outline-none overflow-hidden inline-block relative font-poppins tracking-[0.5px];
-	}
-
-	button > div {
-		@apply absolute top-0 -left-1/4 w-0 z-10 duration-[.6s] h-[102%];
-		transform: skew(-22deg);
-	}
-
-	button > span {
-		@apply relative z-20 font-poppins duration-150;
-	}
-
-	button i {
-		@apply duration-150 pr-[11px];
-	}
-
 	button:hover > div {
 		width: 180%;
 	}

@@ -1,30 +1,37 @@
 <script lang="ts">
+	import { navigator } from '$lib/stores/currentPage';
 	import selectedColor from '$lib/stores/selectedColor';
+	import Button from '../Button/Button.svelte';
+
+	const aboutBtnClasses = {
+		button: `mr-[25px] hover:text-white bg-${$selectedColor}`,
+		animateDiv: 'bg-[#555]',
+		textSpan: 'text-white',
+		icon: 'text-white'
+	};
+
+	const portfolioBtnClasses = {
+		button: `border bg-transparent border-${$selectedColor}`,
+		animateDiv: `bg-${$selectedColor}`,
+		textSpan: `text-${$selectedColor}`,
+		icon: `text-${$selectedColor}`
+	};
 </script>
 
 <div>
 	<div class="text-left">
-		<a href="#about" class="mr-[25px] bg-{$selectedColor} hover:text-white btn">
-			<div class="bg-[#555]"></div>
-			<span class="text-white">
-				<i class="fa fa-user text-white"></i>
-				more about me
-			</span>
-		</a>
+		<Button
+			logo="user"
+			text="more about me"
+			onClickHandler={navigator.gotoSetter('about')}
+			elementClasses={aboutBtnClasses}
+		/>
 
-		<a href="#portfolio" class="bg-transparent border border-{$selectedColor} btn">
-			<div class="bg-{$selectedColor}"></div>
-			<span class="text-{$selectedColor}">
-				<i class="fa fa-suitcase text-{$selectedColor}"></i>
-				portfolio
-			</span>
-		</a>
+		<Button
+			text="portfolio"
+			logo="suitcase"
+			onClickHandler={navigator.gotoSetter('portfolio')}
+			elementClasses={portfolioBtnClasses}
+		/>
 	</div>
 </div>
-
-<style>
-	a:last-of-type:hover i,
-	a:last-of-type:hover span {
-		color: white;
-	}
-</style>
