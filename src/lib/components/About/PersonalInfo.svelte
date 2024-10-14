@@ -30,7 +30,7 @@
 						class="hidden border-[6px] sm:inline-block border-{$selectedColor} absolute bottom-0 left-0 right-0 top-0 -z-10 inline-block"
 					></div>
 					<img
-						src="dark-about.png"
+						src="/dark-about.png"
 						class="mx-auto mb-8 block h-auto max-w-full bg-black align-middle lg:m-0"
 						alt="Dylan"
 					/>

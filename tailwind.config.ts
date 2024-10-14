@@ -1,8 +1,8 @@
 import { join } from 'path';
 import type { Config } from 'tailwindcss';
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
+// import forms from '@tailwindcss/forms';
 import { skeleton } from '@skeletonlabs/tw-plugin';
+import typography from '@tailwindcss/typography';
 import { portfolio } from './src/portfolio';
 
 export default {
@@ -23,12 +23,12 @@ export default {
 	},
 	safelist: [
 		{
-			pattern: /(bg|text|border)-.*(-500)?/,
+			pattern: /(bg|text|border)-warning-(500)?/,
 			variants: ['hover']
 		}
 	],
 	plugins: [
-		forms,
+		// forms,
 		typography,
 		skeleton({
 			themes: {

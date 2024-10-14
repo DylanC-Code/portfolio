@@ -4,7 +4,7 @@
 	const roles = ['Dylan Castor', 'Developer', 'DevOps', 'Consultant'];
 </script>
 
-<section id="home" class="page-section flex flex-col justify-center pl-[50%] pr-80 text-white">
+<div class="w-full h-full pr-80 pl-[50%] text-white flex flex-col justify-center">
 	<h3 class="text-lg font-normal">Hi there !</h3>
 	<h1 class="relative mb-[10px] mt-[19px] whitespace-nowrap text-[42px] font-medium text-white">
 		I'm
@@ -26,12 +26,12 @@
 	</p>
 
 	<CallToActionsHome />
-</section>
+</div>
 
 <style>
-	#home {
+	div {
 		background:
-			-40% / contain no-repeat url(dark-about.png),
+			-40% / contain no-repeat url(/dark-about.png),
 			#000000;
 	}
 </style>

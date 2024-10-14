@@ -27,7 +27,6 @@
 			<i class="fa fa-comments absolute left-6 top-[14px] text-sm opacity-30"></i>
 			<textarea
 				name=""
-				id=""
 				placeholder="YOUR MESSAGE"
 				class="h-[130px] w-full resize-none rounded-3xl border bg-[#333] pb-4 pl-14 pt-4 text-sm text-white"
 			></textarea>

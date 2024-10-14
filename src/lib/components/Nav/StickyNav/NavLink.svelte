@@ -11,9 +11,6 @@
 	let mounted: boolean;
 
 	const lowerCaseText = text.toLowerCase();
-	const href = `#${lowerCaseText}`;
-
-	const setPage = navigator.gotoSetter(lowerCaseText);
 
 	function animateTick(node: Element) {
 		return {
@@ -34,7 +31,10 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li class:text-red-500={currentRoute && mounted}>
-	<a {href} class="relative grid h-[50px] grid-cols-[60px_60px] items-center" on:click={setPage}>
+	<button
+		class="relative grid h-[50px] grid-cols-[60px_60px] items-center"
+		on:click={navigator.gotoSetter(lowerCaseText)}
+	>
 		<i
 			class="fa fa-{iconName} fa-sm relative mx-auto font-awesome"
 			class:opacity-60={!currentRoute}
@@ -50,7 +50,7 @@
 		></span>
 
 		<span class="animate-[slideIn_.15s_backwards] pl-4 font-normal">{text}</span>
-	</a>
+	</button>
 </li>
 
 <style>
@@ -65,7 +65,4 @@
 			transform: translateX(0);
 		}
 	}
-	/* a span:last-of-type {
-		animation: slideIn 0.15s backwards;
-	} */
 </style>

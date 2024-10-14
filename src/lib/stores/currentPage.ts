@@ -32,14 +32,14 @@ function goto(pageName: string) {
 	if (!browser) return;
 	navigationHistory.push(get(currentPage));
 
-	changeActivePage(pageName);
+	// changeActivePage(pageName);
 	currentPage.set(pageName);
 }
 
 function comeback() {
 	const pageName = navigationHistory.pop() || 'home';
 
-	changeActivePage(pageName);
+	// changeActivePage(pageName);
 	currentPage.set(pageName);
 }
 
