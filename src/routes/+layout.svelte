@@ -24,7 +24,7 @@
 	// storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
 
-<div class="min-h-screen w-screen overflow-x-hidden contain-layout">
+<div class="min-h-dvh w-screen overflow-x-hidden contain-layout">
 	<header>
 		<FullScreenNav />
 

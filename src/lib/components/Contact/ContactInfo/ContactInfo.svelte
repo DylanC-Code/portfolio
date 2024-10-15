@@ -8,15 +8,15 @@
 	}
 
 	const infosList: Array<IContactInfo> = [
-		{ mode: 'Phone', value: '+33 6 50 32 29 56', logo: 'whatsapp' },
-		{ mode: 'Email', value: 'contact@dylan-castor.com', logo: 'envelope' },
-		{ mode: 'Linkedin', value: 'dylan-code', logo: 'linkedin' }
+		{ mode: 'Phone', value: '+33 6 50 32 29 56', logo: 'fa-solid fa-phone' },
+		{ mode: 'Email', value: 'contact@dylan-castor.com', logo: 'fa-solid fa-envelope' },
+		{ mode: 'Linkedin', value: 'dylan-code', logo: 'fa-brands fa-linkedin' }
 	];
 
 	const socialsMedias = [
-		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'linkedin' },
-		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'linkedin' },
-		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'linkedin' }
+		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'fa-brands fa-linkedin-in' },
+		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'fa-brands fa-linkedin-in' },
+		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'fa-brands fa-linkedin-in' }
 	];
 </script>
 
@@ -29,7 +29,7 @@
 						<span class="mb-2 block font-openSans text-[15px] capitalize leading-[18px] opacity-80"
 							>{mode}</span
 						>
-						<i class="fa fa-{logo} text-{$selectedColor} bg-transparent pr-3 duration-[.4s]"></i>
+						<i class="{logo} text-{$selectedColor} bg-transparent pr-3 duration-[.4s]"></i>
 						<span class="font-openSans text-[17px] font-medium leading-5">{value}</span>
 					</h6>
 				</li>
@@ -47,7 +47,7 @@
 						target="_blank"
 						class="border-{$selectedColor} text-{$selectedColor} hover:bg-{$selectedColor} block h-9 w-9 rounded-full border text-center leading-9"
 					>
-						<i class="fa fa-{logo} text-{$selectedColor} bg-transparent duration-[.4s]"></i>
+						<i class="fa-brands fa-{logo} text-{$selectedColor} bg-transparent duration-[.4s]"></i>
 					</a>
 				</li>
 			{/each}

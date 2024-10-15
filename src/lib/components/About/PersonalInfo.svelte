@@ -2,7 +2,7 @@
 	import selectedColor from '$lib/stores/selectedColor';
 	import Button from '../Button/Button.svelte';
 
-	const openCVHandler = () => window.open('/cv.pdf', '_blank');
+	const downloadCVHandler = () => window.open('/cv.pdf', '_blank');
 
 	const infosList1 = [
 		{ label: 'First Name', value: 'Dylan' },
@@ -49,7 +49,7 @@
 				<section class="relative w-full px-4 sm:max-w-[50%] sm:flex-[0_0_50%]">
 					<ul class="-mt-2 mb-0 p-0 md:text-right lg:text-left">
 						{#each infosList1 as { label, value }}
-							<li class="relative">
+							<li class="relative pb-5 sm:last:pb-0">
 								<h6 class="mb-0 mt-1 font-medium normal-case text-white">
 									<span class="mb-2 block font-normal capitalize opacity-80 lg:inline lg:pr-5"
 										>{label}</span
@@ -63,7 +63,7 @@
 				<section class="relative w-full px-4 sm:max-w-[50%] sm:flex-[0_0_50%]">
 					<ul class="-mt-2 mb-0 p-0">
 						{#each infosList2 as { label, value }}
-							<li class="relative">
+							<li class="relative pb-5 sm:last:pb-0">
 								<h6 class="mb-0 mt-1 font-medium normal-case text-white">
 									<span class="mb-2 block font-normal capitalize opacity-80 lg:inline lg:pr-5"
 										>{label}</span
@@ -78,7 +78,7 @@
 					class="relative w-full max-w-full flex-[0_0_100%] px-4 md:text-center lg:text-left"
 				>
 					<Button
-						on:click={openCVHandler}
+						onClickHandler={downloadCVHandler}
 						logo="download"
 						text="download my cv"
 						elementClasses={{ button: `mt-4 mb-9 sm:mt-8 sm:mb-0 bg-${$selectedColor}` }}
@@ -92,9 +92,5 @@
 <style>
 	.image-container > div {
 		transform: translate3d(26px, 26px, -26px);
-	}
-
-	li:not(:last-child) {
-		padding-bottom: 21px;
 	}
 </style>

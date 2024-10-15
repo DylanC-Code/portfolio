@@ -7,7 +7,9 @@ const navigationHistory: Array<string> = [];
 
 function goto(pageName: string) {
 	if (!browser) return;
-	navigationHistory.push(get(currentPage));
+
+	const currentPageName = get(currentPage);
+	if (navigationHistory.length > 1) navigationHistory.push(currentPageName);
 
 	currentPage.set(pageName);
 }
