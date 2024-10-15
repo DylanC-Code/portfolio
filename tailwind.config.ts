@@ -18,6 +18,9 @@ export default {
 				poppins: ['Poppins'],
 				awesome: ['FontAwesome'],
 				openSans: ['Open Sans']
+			},
+			height: {
+				dvh: '100dvh'
 			}
 		}
 	},

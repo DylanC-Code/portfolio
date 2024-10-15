@@ -8,6 +8,7 @@
 </script>
 
 <li
+	on:click={navigator.gotoSetter(hash)}
 	class="flex w-full justify-center rounded-sm bg-[#333333] align-middle text-lg font-semibold sm:text-[28px] sm:font-semibold sm:leading-[42px]"
 >
 	<button on:click={navigator.gotoSetter(hash)}>

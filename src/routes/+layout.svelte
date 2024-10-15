@@ -25,11 +25,13 @@
 </script>
 
 <div class="min-h-screen w-screen overflow-x-hidden contain-layout">
-	<FullScreenNav />
+	<header class="relative z-30">
+		<FullScreenNav />
 
-	<!-- <header class="absolute bottom-0 left-0 right-0 top-0 z-30 h-full w-full p-0"> -->
+		<!-- <header class="absolute bottom-0 left-0 right-0 top-0 z-30 h-full w-full p-0"> -->
 		<StickyNav />
-	<!-- </header> -->
+		<!-- </header> -->
+	</header>
 
 	<slot />
 </div>
