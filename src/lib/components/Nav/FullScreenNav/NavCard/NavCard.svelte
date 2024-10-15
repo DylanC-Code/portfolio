@@ -7,6 +7,8 @@
 	export let logo: string;
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <li
 	on:click={navigator.gotoSetter(hash)}
 	class="flex w-full justify-center rounded-sm bg-[#333333] align-middle text-lg font-semibold sm:text-[28px] sm:font-semibold sm:leading-[42px]"

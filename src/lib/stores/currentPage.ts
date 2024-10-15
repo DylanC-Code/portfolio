@@ -6,7 +6,6 @@ const currentPage = writable('home');
 const navigationHistory: Array<string> = [];
 
 function goto(pageName: string) {
-	console.log("🚀 ~ goto ~ pageName:", pageName)
 	if (!browser) return;
 	navigationHistory.push(get(currentPage));
 

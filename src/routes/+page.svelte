@@ -5,7 +5,7 @@
 	import Page from '$lib/components/Page/Page.svelte';
 </script>
 
-<Page name="home" component={Home} />
+<Page name="home" component={Home} classes="hidden lg:block" />
 <Page name="about" component={About} />
 <Page name="contact" component={Contact} />
 <!-- <Page name="portfolio" component={Contact} />
