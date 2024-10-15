@@ -7,6 +7,6 @@
 		<NavCard text="About me" hash="about" logo="user" />
 		<NavCard text="My portfolio" hash="portfolio" logo="briefcase" />
 		<NavCard text="Get in touch" hash="contact" logo="envelope-open" />
-		<NavCard text="My blog" hash="blog" logo="comments" />
+		<!-- <NavCard text="My blog" hash="blog" logo="comments" /> -->
 	</ul>
 </nav>

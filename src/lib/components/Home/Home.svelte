@@ -1,4 +1,5 @@
 <script lang="ts">
+	import selectedColor from '$lib/stores/selectedColor';
 	import CallToActionsHome from './CallToActionsHome.svelte';
 
 	const roles = ['Dylan Castor', 'Developer', 'DevOps', 'Consultant'];
@@ -9,11 +10,11 @@
 	<h1 class="relative mb-[10px] mt-[19px] whitespace-nowrap text-[42px] font-medium text-white">
 		I'm
 		<span
-			class="relative inline-block overflow-hidden p-0 text-left align-top text-[42px] leading-[42px] text-warning-500"
+			class="relative inline-block overflow-hidden p-0 text-left align-top text-[42px] leading-[42px] text-{$selectedColor}"
 		>
 			{#each roles as role}
 				<b
-					class="absolute left-0 top-0 inline-block whitespace-nowrap font-bold text-warning-500 opacity-0 first-of-type:opacity-100"
+					class="absolute left-0 top-0 inline-block whitespace-nowrap font-bold text-{$selectedColor} opacity-0 first-of-type:opacity-100"
 					>{role}</b
 				>
 			{/each}

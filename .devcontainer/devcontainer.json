@@ -12,7 +12,9 @@
 		"--env-file",
 		".devcontainer/devcontainer.env",
 		"-p",
-		"5173:5173"
+		"5173:5173",
+		"-p",
+		"4173:4173"
 	]
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},

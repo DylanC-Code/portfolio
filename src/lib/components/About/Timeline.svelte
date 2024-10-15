@@ -12,7 +12,7 @@
 		{#each phases as phase}
 			<li class="relative pb-[50px]">
 				<span
-					class="border-l-{$selectedColor} absolute left-[7px] top-0 hidden h-full w-[1px] border opacity-60 content-[''] md:block"
+					class="border-{$selectedColor} border-l-{$selectedColor} absolute left-[7px] top-0 hidden h-full w-[1px] border opacity-60 content-[''] md:block"
 				></span>
 				<span
 					class="border-{$selectedColor} absolute left-0 top-0 hidden h-[15px] w-[15px] rounded-full border-2 bg-surface-50 md:block"

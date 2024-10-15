@@ -16,15 +16,13 @@
 	>
 		<Burger {visible} />
 
-		<!-- {#if visible} -->
 		<ul class="relative z-20 pb-[22px] pt-[53px]" class:invisible={!visible}>
 			<NavLink delay={0.05} iconName="house" text="Home" />
 			<NavLink delay={0.1} iconName="user" text="About" />
 			<NavLink delay={0.15} iconName="briefcase" text="Portfolio" />
 			<NavLink delay={0.2} iconName="envelope-open" text="Contact" />
-			<NavLink delay={0.25} iconName="comments" text="Blog" />
+			<!-- <NavLink delay={0.25} iconName="comments" text="Blog" /> -->
 		</ul>
-		<!-- {/if} -->
 
 		<span
 			aria-hidden="true"

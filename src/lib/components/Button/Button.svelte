@@ -18,7 +18,7 @@
 		icon: ''
 	};
 
-	const classes = { ...defaultElementClasses, ...elementClasses };
+	$: classes = { ...defaultElementClasses, ...elementClasses };
 </script>
 
 <button

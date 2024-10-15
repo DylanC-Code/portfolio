@@ -1,5 +1,6 @@
 <script lang="ts">
 	import currentPage, { navigator } from '$lib/stores/currentPage';
+	import selectedColor from '$lib/stores/selectedColor';
 	import { onMount } from 'svelte';
 	import { linear } from 'svelte/easing';
 	import { scale } from 'svelte/transition';
@@ -26,11 +27,13 @@
 	onMount(() => (mounted = true));
 
 	$: currentRoute = lowerCaseText === $currentPage;
+
+	$: cBackground = currentRoute && mounted ? `bg-${$selectedColor}` : '';
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<li class:text-red-500={currentRoute && mounted}>
+<li class={cBackground}>
 	<button
 		class="relative grid h-[50px] grid-cols-[60px_60px] items-center"
 		on:click={navigator.gotoSetter(lowerCaseText)}
@@ -43,8 +46,7 @@
 		</i>
 
 		<span
-			class="absolute left-[57px] top-1/2 h-4 w-[3px] -translate-y-1/2"
-			class:bg-red-500={currentRoute && mounted}
+			class="absolute left-[57px] top-1/2 h-4 w-[3px] -translate-y-1/2 {cBackground}"
 			class:hidden={!currentRoute}
 			in:animateTick
 		></span>
