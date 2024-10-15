@@ -4,7 +4,7 @@
 	const roles = ['Dylan Castor', 'Developer', 'DevOps', 'Consultant'];
 </script>
 
-<div class="w-full h-full pr-80 pl-[50%] text-white flex flex-col justify-center">
+<div class="hidden h-full w-full flex-col justify-center pl-[50%] pr-80 text-white lg:flex">
 	<h3 class="text-lg font-normal">Hi there !</h3>
 	<h1 class="relative mb-[10px] mt-[19px] whitespace-nowrap text-[42px] font-medium text-white">
 		I'm

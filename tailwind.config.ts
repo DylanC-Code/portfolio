@@ -14,8 +14,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['poppins'],
-				poppins: ['poppins'],
+				sans: ['Poppins'],
+				poppins: ['Poppins'],
 				awesome: ['FontAwesome'],
 				openSans: ['Open Sans']
 			}
