@@ -29,17 +29,18 @@
 	$: currentRoute = lowerCaseText === $currentPage;
 
 	$: cBackground = currentRoute && mounted ? `bg-${$selectedColor}` : '';
+	$: cText = currentRoute && mounted ? `text-${$selectedColor}` : '';
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<li class={cBackground}>
+<li>
 	<button
-		class="relative grid h-[50px] grid-cols-[60px_60px] items-center"
+		class="text relative grid h-[50px] grid-cols-[60px_60px] items-center"
 		on:click={navigator.gotoSetter(lowerCaseText)}
 	>
 		<i
-			class="fa fa-{iconName} fa-sm relative mx-auto font-awesome"
+			class="fa fa-{iconName} fa-sm relative mx-auto font-awesome {cText}"
 			class:opacity-60={!currentRoute}
 			in:scale={{ delay, duration: 150, start: 0 }}
 		>
@@ -51,7 +52,7 @@
 			in:animateTick
 		></span>
 
-		<span class="animate-[slideIn_.15s_backwards] pl-4 font-normal">{text}</span>
+		<span class="animate-[slideIn_.15s_backwards] pl-4 font-normal {cText}">{text}</span>
 	</button>
 </li>
 

@@ -2,9 +2,15 @@ import { get, writable } from 'svelte/store';
 
 const navigationHistory = writable<Array<string>>([]);
 
-function push(pageName: string) {
-	navigationHistory.update(($navigationHistory) => [...$navigationHistory, pageName]);
+function push(newPageName: string) {
+	const pageNameIndex = get(navigationHistory).findIndex((pageName) => pageName === newPageName);
+
+	if (pageNameIndex === -1)
+		navigationHistory.update(($navigationHistory) => [...$navigationHistory, newPageName]);
+	else
+		navigationHistory.update(($navigationHistory) => $navigationHistory.toSpliced(pageNameIndex));
 }
+navigationHistory.subscribe(console.log);
 
 function pop() {
 	let item: string;
@@ -19,6 +25,8 @@ function pop() {
 
 export default {
 	subscribe: navigationHistory.subscribe,
+	update: navigationHistory.update,
+	reset: () => navigationHistory.set([]),
 	push,
 	pop,
 	get length() {

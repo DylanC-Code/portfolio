@@ -3,7 +3,6 @@
 	import navigationHistory from '$lib/stores/navigationHistory';
 	import selectedColor from '$lib/stores/selectedColor';
 	import { linear } from 'svelte/easing';
-	import { fade } from 'svelte/transition';
 
 	export let component;
 	export let name: string;
@@ -16,7 +15,6 @@
 			css: (t: number) => {
 				const motion = linear(t);
 				return `
-					z-index: 10;
 					transform: translateX(${100 - 100 * motion}%);
 				`;
 			}
@@ -27,7 +25,6 @@
 
 	function displayingOutPage(node: Element) {
 		if (pageInHistory) return {};
-		if (window.innerWidth > 768) return fade(node, { delay: 300 });
 		return displayingInPage(node);
 	}
 </script>
