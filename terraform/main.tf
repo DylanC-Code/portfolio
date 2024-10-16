@@ -27,3 +27,7 @@ resource "aws_route53_record" "static_website_record" {
   }
 }
 
+
+module "lambda_send_mail" {
+  source = "./lambda_send_mail"
+}
