@@ -7,21 +7,20 @@
 		button: `mr-[25px] hover:text-white bg-${$selectedColor}`,
 		animateDiv: 'bg-[#555]',
 		textSpan: 'text-white',
-		icon: 'text-white'
+		icon: 'text-white fa-solid fa-user'
 	};
 
 	const portfolioBtnClasses = {
 		button: `border bg-transparent border-${$selectedColor}`,
 		animateDiv: `bg-${$selectedColor}`,
 		textSpan: `text-${$selectedColor}`,
-		icon: `text-${$selectedColor}`
+		icon: `text-${$selectedColor} fa-solid fa-suitcase`
 	};
 </script>
 
 <div>
 	<div class="text-left">
 		<Button
-			logo="user"
 			text="more about me"
 			onClickHandler={navigator.gotoSetter('about')}
 			elementClasses={aboutBtnClasses}
@@ -29,7 +28,6 @@
 
 		<Button
 			text="portfolio"
-			logo="suitcase"
 			onClickHandler={navigator.gotoSetter('portfolio')}
 			elementClasses={portfolioBtnClasses}
 		/>

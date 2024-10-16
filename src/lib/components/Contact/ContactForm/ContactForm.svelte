@@ -33,9 +33,12 @@
 		</div>
 	</fieldset>
 
-	<Button text="send message" logo="send" elementClasses={{ button: `bg-${$selectedColor}` }} />
+	<Button
+		text="send message"
+		elementClasses={{ button: `bg-${$selectedColor}`, icon: 'fa-solid fa-paper-plane' }}
+	/>
 
-	<div class="relative my-6 mb-6 w-full">
+	<div class="relative my-6 w-full">
 		<span
 			class="block h-11 rounded bg-green-600 text-center font-poppins text-sm font-semibold uppercase leading-[46px]"
 		>

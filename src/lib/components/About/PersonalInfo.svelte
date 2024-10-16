@@ -79,9 +79,11 @@
 				>
 					<Button
 						onClickHandler={downloadCVHandler}
-						logo="download"
 						text="download my cv"
-						elementClasses={{ button: `mt-4 mb-9 sm:mt-8 sm:mb-0 bg-${$selectedColor}` }}
+						elementClasses={{
+							button: `mt-4 mb-9 sm:mt-8 sm:mb-0 bg-${$selectedColor}`,
+							icon: 'fa-solid fa-download'
+						}}
 					></Button>
 				</section>
 			</div>

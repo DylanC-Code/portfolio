@@ -7,7 +7,6 @@
 	}
 
 	export let onClickHandler = () => {};
-	export let logo = '';
 	export let text: string;
 	export let elementClasses: { [K in keyof IButtonClasses]?: string };
 
@@ -29,7 +28,7 @@
 		class="absolute -left-1/4 top-0 z-10 h-[102%] w-0 skew-x-[22deg] bg-[#555] duration-[.6s] {classes.animateDiv}"
 	></div>
 	<span class="relative z-20 font-poppins duration-150 {classes.textSpan}">
-		<i class="fa fa-{logo} pr-[11px] duration-150 {classes.icon}"></i>{text}
+		<i class="pr-[11px] duration-150 {classes.icon}"></i>{text}
 	</span>
 </button>
 

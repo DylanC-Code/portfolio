@@ -35,7 +35,7 @@
 	>
 		<button
 			class:hidden={$currentPage === 'home'}
-			class="fixed left-0 top-0 z-20 block h-[55px] w-[60px] rounded-br-[44px] bg-{$selectedColor} text-center leading-[54px] md:hidden"
+			class="fixed left-0 top-0 z-30 block h-[55px] w-[60px] rounded-br-[44px] bg-{$selectedColor} text-center leading-[54px] md:hidden"
 			on:click={() => navigator.comeback()}
 		>
 			<i class="fa fa-lg fa-arrow-left -ml-[6px]"></i>

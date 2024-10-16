@@ -20,11 +20,12 @@
 	];
 </script>
 
-<div class="mb-7 w-full flex-[0_0_100%] px-4 md:flex-[0_0_33%]">
+<!-- <div class="mb-7 w-full flex-[0_0_100%] px-4 md:flex-[0_0_33%]"> -->
+<div class="mb-7 w-full flex-[0_0_100%] md:flex-[0_0_33%]">
 	<div>
 		<ul>
 			{#each infosList as { logo, mode, value }}
-				<li>
+				<li class="pb-6 last:pb-0">
 					<h6 class="normal-case">
 						<span class="mb-2 block font-openSans text-[15px] capitalize leading-[18px] opacity-80"
 							>{mode}</span
@@ -37,7 +38,7 @@
 		</ul>
 	</div>
 
-	<div class="mb-5 mt-7">
+	<div class="mt-7">
 		<h6 class="mb-2 block font-openSans text-[15px] capitalize opacity-80">Social profiles</h6>
 		<ul class="m-0 flex gap-x-4">
 			{#each socialsMedias as { logo, url }}
@@ -56,10 +57,6 @@
 </div>
 
 <style>
-	li:not(:last-child) {
-		padding-bottom: 25px;
-	}
-
 	i {
 		transform: rotateY(0deg);
 	}

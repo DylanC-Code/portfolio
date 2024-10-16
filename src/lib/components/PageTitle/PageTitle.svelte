@@ -7,8 +7,10 @@
 </script>
 
 <header class="relative w-screen pb-[49px] pt-[55px] text-center md:pb-[54px] md:pt-[60px]">
-	<h2 class="px-6 font-poppins text-[35px] font-black uppercase leading-[1.2] md:text-[55px]">
-		<!-- <h2 class="text-[55px] uppercase font-poppins font-black px-6 leading-[1.2]"> -->
+	<!-- <h2
+		class="px-6 font-poppins text-4xl font-black uppercase leading-[1.2] min-[480px]:text-8xl sm:text-[55px]"
+	> -->
+	<h2 class="px-6 font-poppins text-[55px] font-black uppercase leading-[1.2]">
 		{titleFirstPart}
 		<span class="text-{$selectedColor}">{titleSecondPart}</span>
 	</h2>
