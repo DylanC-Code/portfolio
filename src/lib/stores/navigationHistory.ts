@@ -10,7 +10,6 @@ function push(newPageName: string) {
 	else
 		navigationHistory.update(($navigationHistory) => $navigationHistory.toSpliced(pageNameIndex));
 }
-navigationHistory.subscribe(console.log);
 
 function pop() {
 	let item: string;
