@@ -1,5 +1,6 @@
 <script lang="ts">
 	import currentPage, { navigator } from '$lib/stores/currentPage';
+	import navigationHistory from '$lib/stores/navigationHistory';
 	import selectedColor from '$lib/stores/selectedColor';
 	import { linear } from 'svelte/easing';
 	import { fade } from 'svelte/transition';
@@ -7,6 +8,7 @@
 	export let component;
 	export let name: string;
 	export let classes = '';
+	export let props = {};
 
 	function displayingInPage(node: Element) {
 		return {
@@ -41,6 +43,6 @@
 			<i class="fa fa-lg fa-arrow-left -ml-[6px]"></i>
 		</button>
 
-		<svelte:component this={component} />
+		<svelte:component this={component} {...props} />
 	</section>
 {/if}

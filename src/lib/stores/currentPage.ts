@@ -1,21 +1,20 @@
 import { browser } from '$app/environment';
 import { get, writable } from 'svelte/store';
+import navigationHistory from './navigationHistory';
 
 const currentPage = writable('home');
-
-const navigationHistory: Array<string> = [];
 
 function goto(pageName: string) {
 	if (!browser) return;
 
 	const currentPageName = get(currentPage);
-	if (navigationHistory.length > 1) navigationHistory.push(currentPageName);
+	navigationHistory.push(currentPageName);
 
 	currentPage.set(pageName);
 }
 
 function comeback() {
-	const pageName = navigationHistory.pop() || 'home';
+	const pageName = navigationHistory.pop();
 
 	currentPage.set(pageName);
 }
