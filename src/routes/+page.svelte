@@ -20,7 +20,7 @@
 			url: 'https://google.com'
 		}
 	];
-	$: console.log('nav history', $navigationHistory);
+
 </script>
 
 <Page name="home" component={Home} classes="hidden lg:block" />

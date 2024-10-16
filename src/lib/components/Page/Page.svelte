@@ -23,13 +23,16 @@
 		};
 	}
 
+	$: pageInHistory = $navigationHistory.includes(name);
+
 	function displayingOutPage(node: Element) {
+		if (pageInHistory) return {};
 		if (window.innerWidth > 768) return fade(node, { delay: 300 });
 		return displayingInPage(node);
 	}
 </script>
 
-{#if $currentPage === name}
+{#if $currentPage === name || pageInHistory}
 	<section
 		class="absolute left-0 top-0 z-10 h-full w-full overflow-y-auto overflow-x-hidden bg-surface-50 delay-[.6s] duration-[.6s] ease-linear {classes}"
 		in:displayingInPage
