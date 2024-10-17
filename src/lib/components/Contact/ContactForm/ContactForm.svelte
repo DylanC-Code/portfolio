@@ -1,29 +1,33 @@
 <script lang="ts">
 	import Button from '$lib/components/Button/Button.svelte';
 	import selectedColor from '$lib/stores/selectedColor';
+	import { PUBLIC_SERVER_ADDRESS } from '$env/static/public';
 
-	const messageSent = localStorage.getItem('messageSent');
+	let messageSent = Boolean(localStorage.getItem('messageSent'));
+	let error: string;
 
 	const info = {
-		name: 'dylan',
+		name: '',
 		email: 'dylan@gmail.com',
 		message:
 			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus placeat quam, ea, accusamus ab, sint aspernatur umquam temporibus ipsum doloremque fugiat amet tempora excepturi sequi corporis possimus saepe autem et.Accusantium pariatur, necessitatibus ad suscipit molestiae possimus eius esse sunt, et architecto temporibus nisi tempora enim. Unde porro, sit minus, vitae ut pariatur quibusdam, quia eum est sequi quod molestias?'
 	};
 
-	async function sendMessageHandler(e) {
+	async function sendMessageHandler(e: Event) {
 		e.preventDefault();
-		const response = await fetch('/send-message', {
+		const response = await fetch(`${PUBLIC_SERVER_ADDRESS}/send-mail`, {
 			method: 'POST',
-			body: JSON.stringify(info),
-			headers: {
-				'Content-Type': 'application/json'
-			}
+			body: JSON.stringify(info)
 		});
 
 		const parsedResponse = await response.json();
-		console.log('🚀 ~ sendMessageHandler ~ parsedResponse:', parsedResponse);
-		// if(parsedResponse.)
+
+		if (parsedResponse.error) return (error = parsedResponse.error);
+
+		messageSent = true;
+		error = '';
+
+		localStorage.setItem('messageSent', 'true');
 	}
 </script>
 
@@ -34,7 +38,6 @@
 			<input
 				type="text"
 				placeholder="YOUR NAME"
-				required
 				bind:value={info.name}
 				minlength="2"
 				maxlength="255"
@@ -77,6 +80,14 @@
 		>
 			<i class="fa fa-square-check mr-2"></i>
 			Message Sent!
+		</span>
+	</div>
+	<div class="relative my-6 w-full" class:hidden={!error}>
+		<span
+			class="block h-11 rounded bg-error-600 text-center font-poppins text-sm font-semibold uppercase leading-[46px]"
+		>
+			<i class="fa fa-triangle-exclamation mr-2"></i>
+			{error}
 		</span>
 	</div>
 </form>

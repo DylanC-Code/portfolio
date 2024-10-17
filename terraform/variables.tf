@@ -12,3 +12,16 @@ variable "aws_region" {
   type    = string
   default = "eu-west-3"
 }
+
+variable "environment" {
+  type    = string
+  default = "development"
+}
+
+variable "destination_email" {
+  type = string
+}
+
+variable "ses_email_from" {
+  type = string
+}

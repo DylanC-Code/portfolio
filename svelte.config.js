@@ -19,7 +19,7 @@ const config = {
 		alias: {
 			'$types/*': './src/types/*',
 			'$components/*': './src/lib/components/*'
-		}
-	}
+		},
+	},
 };
 export default config;

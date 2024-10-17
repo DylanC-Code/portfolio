@@ -27,7 +27,16 @@ resource "aws_route53_record" "static_website_record" {
   }
 }
 
-
 module "lambda_send_mail" {
-  source = "./lambda_send_mail"
+  source            = "./lambda_send_mail"
+  domain_name       = var.domain_name
+  destination_email = var.destination_email
+  ses_email_from    = var.ses_email_from
+}
+
+module "lambda_api_gateway" {
+  source                         = "./lambda_api_gateway"
+  send_mail_lambda_arn           = module.lambda_send_mail.arn
+  send_mail_lambda_function_name = module.lambda_send_mail.function_name
+  stage_name                     = var.environment
 }
