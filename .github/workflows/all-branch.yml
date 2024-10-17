@@ -32,15 +32,17 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          PUBLIC_SERVER_ADDRESS: ${{vars.PUBLIC_SERVER_ADDRESS}}
 
       - name: Deploy Infra
         run: |
           if [ "${{github.ref}}" == "ref/heads/develop" ]; then
-            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.DEV_SUBDOMAIN}}'
+            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.DEV_SUBDOMAIN}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
           elif [ "${{github.ref}}" == "ref/heads/staging" ]; then
-            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.STAGING_SUBDOMAIN}}'
+            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.STAGING_SUBDOMAIN}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
           elif [ "${{github.ref}}" == "ref/heads/main" ]; then
-            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}'
+            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
           fi
 
       - name: Configure AWS credentials

@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Button from '$lib/components/Button/Button.svelte';
 	import selectedColor from '$lib/stores/selectedColor';
-	import { PUBLIC_SERVER_ADDRESS } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
+	console.log("🚀 ~ env:", env)
 
 	let messageSent = Boolean(localStorage.getItem('messageSent'));
 	let error: string;
@@ -15,7 +16,7 @@
 
 	async function sendMessageHandler(e: Event) {
 		e.preventDefault();
-		const response = await fetch(`${PUBLIC_SERVER_ADDRESS}/send-mail`, {
+		const response = await fetch(`${env.PUBLIC_SERVER_ADDRESS}/send-mail`, {
 			method: 'POST',
 			body: JSON.stringify(info)
 		});
