@@ -6,7 +6,7 @@
 
 	const titleFirstPart = 'get';
 	const titleSecondPart = 'in touch';
-	const subTitle = 'I’m always open to discussing product design work or partnerships.';
+	const subTitle = "The future is not what will happen, it's what you will make of it.";
 </script>
 
 <PageTitle {titleSecondPart} {titleFirstPart} {subTitle} />
@@ -17,8 +17,8 @@
 	<!-- <div class="w-full flex-[0_0_100%] px-6 md:flex-[0_0_66%]"> -->
 	<div class="w-full flex-[0_0_100%] md:flex-[0_0_66%]">
 		<p class="mb-6 font-openSans leading-8">
-			If you have any suggestion, project or even you want to say Hello.. please fill out the form
-			below and I will reply you shortly.
+			Got a cool project in mind or just want to say hi? Drop me a message and I’ll get back to you
+			as soon as I can. Looking forward to hearing from you!
 		</p>
 
 		<ContactForm />

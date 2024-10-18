@@ -5,7 +5,7 @@
 
 	const titleFirstPart = 'about';
 	const titleSecondPart = 'me';
-	const subTitle = 'I design and code beautiful things, and I love what I do.';
+	const subTitle = 'Always exploring, always learning, always improving.';
 </script>
 
 <PageTitle {titleSecondPart} {titleFirstPart} {subTitle} />

@@ -2,7 +2,7 @@
 	import NavCard from './NavCard/NavCard.svelte';
 </script>
 
-<nav class="md:hidden">
+<nav class="lg:hidden">
 	<ul class="grid h-dvh grid-cols-1 gap-6 p-6 sm:grid-cols-2">
 		<NavCard text="About me" hash="about" logo="user" />
 		<NavCard text="Get in touch" hash="contact" logo="envelope-open" />

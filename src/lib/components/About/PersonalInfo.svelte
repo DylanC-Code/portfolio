@@ -37,9 +37,7 @@
 				</div>
 
 				<p class="mb-[25px] mt-[60px] leading-8 md:hidden">
-					I'm a Freelance UI/UX Designer and Developer based in London, England. I strives to build
-					immersive and beautiful web applications through carefully crafted code and user-centric
-					design.
+					I am a passionate developer and DevOps engineer. I have a strong focus on building efficient, scalable systems and automating processes to deliver high-quality solutions. Technology fascinates me, and I love learning and integrating new tools and methodologies to continuously improve my craft.
 				</p>
 			</div>
 

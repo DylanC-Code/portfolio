@@ -8,12 +8,8 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<!-- <nav class="font-semibold uppercase text-white"> -->
-<nav class="absolute left-0 top-0 z-30 font-semibold uppercase text-white">
-	<div
-		class="invisible fixed left-[30px] top-[30px] z-20 md:visible"
-		on:click={toggleNavVisibility}
-	>
+<nav class="fixed left-[30px] top-[30px] z-30 hidden font-semibold uppercase text-white lg:block">
+	<div on:click={toggleNavVisibility}>
 		<Burger {visible} />
 
 		<ul class="relative z-20 pb-[22px] pt-[53px]" class:invisible={!visible}>
@@ -21,7 +17,6 @@
 			<NavLink delay={0.1} iconName="user" text="About" />
 			<NavLink delay={0.15} iconName="briefcase" text="Portfolio" />
 			<NavLink delay={0.2} iconName="envelope-open" text="Contact" />
-			<!-- <NavLink delay={0.25} iconName="comments" text="Blog" /> -->
 		</ul>
 
 		<span

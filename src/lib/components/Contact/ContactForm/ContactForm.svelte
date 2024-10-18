@@ -36,6 +36,7 @@
 			<i class="fa fa-user absolute left-6 top-[14px] text-sm opacity-30"></i>
 			<input
 				type="text"
+				autocomplete="given-name"
 				placeholder="YOUR NAME"
 				bind:value={info.name}
 				disabled={messageSent}
