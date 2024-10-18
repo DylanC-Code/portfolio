@@ -2,16 +2,14 @@
 	import Button from '$lib/components/Button/Button.svelte';
 	import selectedColor from '$lib/stores/selectedColor';
 	import { env } from '$env/dynamic/public';
-	console.log("🚀 ~ env:", env)
 
 	let messageSent = Boolean(localStorage.getItem('messageSent'));
 	let error: string;
 
 	const info = {
 		name: '',
-		email: 'dylan@gmail.com',
-		message:
-			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus placeat quam, ea, accusamus ab, sint aspernatur umquam temporibus ipsum doloremque fugiat amet tempora excepturi sequi corporis possimus saepe autem et.Accusantium pariatur, necessitatibus ad suscipit molestiae possimus eius esse sunt, et architecto temporibus nisi tempora enim. Unde porro, sit minus, vitae ut pariatur quibusdam, quia eum est sequi quod molestias?'
+		email: '',
+		message: ''
 	};
 
 	async function sendMessageHandler(e: Event) {
@@ -40,8 +38,10 @@
 				type="text"
 				placeholder="YOUR NAME"
 				bind:value={info.name}
+				disabled={messageSent}
 				minlength="2"
 				maxlength="255"
+				class:cursor-not-allowed={messageSent}
 				class="h-12 w-full rounded-3xl border bg-[#333] pl-14 text-sm text-white"
 			/>
 		</div>
@@ -52,6 +52,8 @@
 				type="email"
 				required
 				bind:value={info.email}
+				disabled={messageSent}
+				class:cursor-not-allowed={messageSent}
 				placeholder="YOUR EMAIL"
 				class="h-12 w-full rounded-3xl border bg-[#333] pl-14 text-sm text-white"
 			/>
@@ -64,6 +66,8 @@
 				maxlength="500"
 				required
 				bind:value={info.message}
+				disabled={messageSent}
+				class:cursor-not-allowed={messageSent}
 				placeholder="YOUR MESSAGE"
 				class="h-[130px] w-full resize-none rounded-3xl border bg-[#333] pb-4 pl-14 pt-4 text-sm text-white"
 			></textarea>
@@ -72,7 +76,11 @@
 
 	<Button
 		text="send message"
-		elementClasses={{ button: `bg-${$selectedColor}`, icon: 'fa-solid fa-paper-plane' }}
+		elementClasses={{
+			button: `bg-${$selectedColor} ${messageSent ? 'cursor-not-allowed' : ''}`,
+			icon: 'fa-solid fa-paper-plane'
+		}}
+		disabled={messageSent}
 	/>
 
 	<div class="relative my-6 w-full" class:hidden={!messageSent}>

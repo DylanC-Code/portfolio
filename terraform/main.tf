@@ -40,3 +40,11 @@ module "lambda_api_gateway" {
   send_mail_lambda_function_name = module.lambda_send_mail.function_name
   stage_name                     = var.environment
 }
+
+module "api_gateway_route_53" {
+  source      = "./api_gateway_route_53"
+  domain_name = var.domain_name
+  zone_id     = data.aws_route53_zone.selected.zone_id
+  environment = var.environment
+  api_id      = module.lambda_api_gateway.api_id
+}
