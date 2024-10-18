@@ -1,49 +1,32 @@
 <script lang="ts">
 	import selectedColor from '$lib/stores/selectedColor';
-	import { onMount } from 'svelte';
 	import CallToActionsHome from './CallToActionsHome.svelte';
-	import { cubicInOut } from 'svelte/easing';
 
 	const roles = ['Dylan Castor', 'Developer', 'DevOps', 'Consultant'];
 
-	let displayedRoleIndex: number | null = null;
-	let previousRoleIndex: number;
+	let displayedRoleIndex = 0;
+	let displayedRoleEl: HTMLElement;
 
-	onMount(() => {
-		previousRoleIndex = displayedRoleIndex = 0;
-	});
+	function wordWrappingAnimation(element: HTMLElement) {
+		const fullWidth = displayedRoleEl.clientWidth;
 
-	function wordWrappingIn(node: Element) {
-		const widthMax = node.clientWidth;
-		return {
-			duration: 1500,
-			css(t: number) {
-				if (t === 1) setTimeout(() => (displayedRoleIndex = null), 1500);
+		displayedRoleEl.animate(
+			[
+				{ width: '0px', offset: 0, easing: 'ease-out' },
+				{ width: `${fullWidth}px`, offset: 0.375 },
+				{ width: `${fullWidth}px`, offset: 0.625 },
+				{ width: '0px', offset: 1, easing: 'ease-out' }
+			],
+			3000
+		);
 
-				const motion = cubicInOut(t);
-				return `width: ${widthMax * motion}px`;
-			}
-		};
+		setTimeout(() => {
+			if (displayedRoleIndex !== roles.length - 1) displayedRoleIndex += 1;
+			else displayedRoleIndex = 0;
+		}, 3000);
 	}
 
-	function wordWrappingOut(node: Element) {
-		const widthMax = node.clientWidth;
-
-		return {
-			duration: 1500,
-			delay: 1000,
-			css(t: number) {
-				if (t === 0)
-					setTimeout(() => {
-						if (previousRoleIndex === roles.length - 1) displayedRoleIndex = previousRoleIndex = 0;
-						else displayedRoleIndex = previousRoleIndex += 1;
-					}, 2500);
-
-				const motion = cubicInOut(t);
-				return `width: ${widthMax * motion}px`;
-			}
-		};
-	}
+	$: if (displayedRoleEl) wordWrappingAnimation(displayedRoleEl);
 </script>
 
 <div class="hidden h-full w-full flex-col justify-center text-white lg:flex">
@@ -56,9 +39,8 @@
 			{#each roles as role, index}
 				{#if index === displayedRoleIndex}
 					<b
-						class="whitespace-nowrap font-bold text-{$selectedColor} inline-block overflow-hidden"
-						in:wordWrappingIn
-						out:wordWrappingOut
+						bind:this={displayedRoleEl}
+						class="inline-block overflow-hidden whitespace-nowrap font-bold text-{$selectedColor}"
 					>
 						{role}
 					</b>

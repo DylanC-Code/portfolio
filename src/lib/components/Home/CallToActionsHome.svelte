@@ -3,14 +3,14 @@
 	import selectedColor from '$lib/stores/selectedColor';
 	import Button from '../Button/Button.svelte';
 
-	const aboutBtnClasses = {
+	$: aboutBtnClasses = {
 		button: `mr-[25px] hover:text-white bg-${$selectedColor}`,
 		animateDiv: 'bg-[#555]',
 		textSpan: 'text-white',
 		icon: 'text-white fa-solid fa-user'
 	};
 
-	const portfolioBtnClasses = {
+	$: portfolioBtnClasses = {
 		button: `border bg-transparent border-${$selectedColor}`,
 		animateDiv: `bg-${$selectedColor}`,
 		textSpan: `text-${$selectedColor}`,
