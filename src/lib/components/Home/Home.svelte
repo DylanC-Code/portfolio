@@ -1,27 +1,69 @@
 <script lang="ts">
 	import selectedColor from '$lib/stores/selectedColor';
+	import { onMount } from 'svelte';
 	import CallToActionsHome from './CallToActionsHome.svelte';
+	import { cubicInOut } from 'svelte/easing';
 
 	const roles = ['Dylan Castor', 'Developer', 'DevOps', 'Consultant'];
+
+	let displayedRoleIndex: number | null = null;
+	let previousRoleIndex: number;
+
+	onMount(() => {
+		previousRoleIndex = displayedRoleIndex = 0;
+	});
+
+	function wordWrappingIn(node: Element) {
+		const widthMax = node.clientWidth;
+		return {
+			duration: 1500,
+			css(t: number) {
+				if (t === 1) setTimeout(() => (displayedRoleIndex = null), 1500);
+
+				const motion = cubicInOut(t);
+				return `width: ${widthMax * motion}px`;
+			}
+		};
+	}
+
+	function wordWrappingOut(node: Element) {
+		const widthMax = node.clientWidth;
+
+		return {
+			duration: 1500,
+			delay: 1000,
+			css(t: number) {
+				if (t === 0)
+					setTimeout(() => {
+						if (previousRoleIndex === roles.length - 1) displayedRoleIndex = previousRoleIndex = 0;
+						else displayedRoleIndex = previousRoleIndex += 1;
+					}, 2500);
+
+				const motion = cubicInOut(t);
+				return `width: ${widthMax * motion}px`;
+			}
+		};
+	}
 </script>
 
 <div class="hidden h-full w-full flex-col justify-center text-white lg:flex">
 	<div class="ml-[50vw] max-w-[500px] !bg-transparent !bg-none xl:max-w-[550px]">
 		<h3 class="text-lg font-normal">Hi there !</h3>
 		<h1
-			class="relative mb-[10px] mt-[19px] whitespace-nowrap text-[42px] font-medium leading-[42px] text-white"
+			class="relative mb-[10px] mt-[19px] flex whitespace-nowrap text-[42px] font-medium leading-[42px] text-white"
 		>
-			I'm
-			<span
-				class="relative inline-block overflow-hidden p-0 text-left align-top text-[42px] leading-[42px] text-{$selectedColor}"
-			>
-				{#each roles as role}
+			I'm &nbsp;
+			{#each roles as role, index}
+				{#if index === displayedRoleIndex}
 					<b
-						class="absolute left-0 top-0 inline-block whitespace-nowrap font-bold text-{$selectedColor} opacity-0 first-of-type:opacity-100"
-						>{role}</b
+						class="whitespace-nowrap font-bold text-{$selectedColor} inline-block overflow-hidden"
+						in:wordWrappingIn
+						out:wordWrappingOut
 					>
-				{/each}
-			</span>
+						{role}
+					</b>
+				{/if}
+			{/each}
 		</h1>
 
 		<p class="mb-[23px] mt-[11px] font-normal leading-8">
