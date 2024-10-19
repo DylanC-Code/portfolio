@@ -24,6 +24,25 @@ resource "aws_s3_bucket_public_access_block" "public_access_block" {
   restrict_public_buckets = true
 }
 
+
+resource "aws_s3_bucket_policy" "bucket_policy" {
+  bucket = aws_s3_bucket.website.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          AWS = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
+        }
+        Action   = "s3:GetObject"
+        Resource = "${aws_s3_bucket.website.arn}/*"
+      }
+    ]
+  })
+}
+
 # ==================================================
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "Access Identity for ${var.bucket_name}"
@@ -92,39 +111,3 @@ resource "aws_route53_record" "dns" {
     evaluate_target_health = false
   }
 }
-
-# ==================================================
-# resource "aws_cloudfront_origin_access_identity" "oai" {
-#   comment = "OAI for ${var.environment} environment"
-# }
-
-# data "aws_iam_policy_document" "s3_policy" {
-#   statement {
-#     actions   = ["s3:GetObject"]
-#     resources = ["${aws_s3_bucket.bucket.arn}/*"]
-
-#     principals {
-#       type        = "AWS"
-#       identifiers = [aws_cloudfront_origin_access_identity.oai.iam_arn]
-#     }
-#   }
-# }
-
-# resource "aws_s3_bucket_policy" "bucket_policy" {
-#   bucket = aws_s3_bucket.bucket.id
-#   policy = data.aws_iam_policy_document.s3_policy.json
-
-#   depends_on = [aws_s3_bucket_public_access_block.public_access_block]
-# }
-
-# resource "aws_route53_record" "cdn_alias" {
-#   zone_id = var.zone_id
-#   name    = var.sub_domain != "prod" ? "${var.sub_domain}.${var.var.domain_name}" : var.var.domain_name
-#   type    = "A"
-
-#   alias {
-#     name                   = aws_cloudfront_distribution.cdn.domain_name
-#     zone_id                = aws_cloudfront_distribution.cdn.hosted_zone_id
-#     evaluate_target_health = false
-#   }
-# }

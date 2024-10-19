@@ -62,7 +62,7 @@
 <style>
 	div {
 		background:
-			-40% / contain no-repeat url(/dark-about.png),
+			0% / contain no-repeat url(/dark-bg.png),
 			#000000;
 	}
 </style>
