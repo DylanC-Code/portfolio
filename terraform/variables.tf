@@ -1,11 +1,6 @@
-variable "domain_name" {
-  type        = string
-  description = "Name of the AWS Route53 hosted zone domain"
-}
-
-variable "sub_domain" {
+variable "environment" {
   type    = string
-  default = ""
+  default = "development"
 }
 
 variable "aws_region" {
@@ -13,9 +8,18 @@ variable "aws_region" {
   default = "eu-west-3"
 }
 
-variable "environment" {
-  type    = string
-  default = "development"
+variable "domain_name" {
+  type        = string
+  description = "Name of the AWS Route53 hosted zone domain"
+}
+
+# variable "subdomains" {
+#   description = "List of subdomains per environment"
+#   type        = list(string)
+#   default     = ["dev", "staging", ""]
+# }
+variable "sub_domain" {
+  type = string
 }
 
 variable "destination_email" {
@@ -26,8 +30,4 @@ variable "ses_email_from" {
   type = string
 }
 
-variable "subdomains" {
-  description = "Sub domains list"
-  type        = list(string)
-  default     = ["dev", "staging", ""]
-}
+

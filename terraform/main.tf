@@ -1,8 +1,9 @@
 provider "aws" {}
 
-# locals {
-#   full_domain = "${var.sub_domain}${var.domain_name}"
-# }
+locals {
+  # full_domain = "${var.sub_domain}${var.domain_name}"
+  # subdomain = var.subdomains
+}
 
 data "aws_route53_zone" "selected" {
   name         = var.domain_name
@@ -13,15 +14,19 @@ module "cert" {
   source      = "./cert"
   domain_name = var.domain_name
   zone_id     = data.aws_route53_zone.selected.zone_id
-  subdomains  = var.subdomains
+  sub_domain  = var.sub_domain
   environment = var.environment
 }
 
 module "s3_static_website_buckets" {
-  source      = "./s3_static_website_buckets"
-  bucket_name = "${var.sub_domain}${var.domain_name}"
-  zone_id     = data.aws_route53_zone.selected.zone_id
-  s3_endpoint = "s3-website.${var.aws_region}.amazonaws.com"
+  source          = "./s3_static_website_buckets"
+  bucket_name     = "${var.sub_domain}${var.domain_name}"
+  zone_id         = data.aws_route53_zone.selected.zone_id
+  s3_endpoint     = "s3-website.${var.aws_region}.amazonaws.com"
+  environment     = var.environment
+  sub_domain      = var.sub_domain
+  domain_name     = var.domain_name
+  certificate_arn = module.cert.certificate_arn
 }
 
 module "lambda_send_mail" {
@@ -42,14 +47,14 @@ module "api_gateway" {
   zone_id                        = data.aws_route53_zone.selected.zone_id
 }
 
-module "cloud_front" {
-  source          = "./cloud_front"
-  domain_name     = var.domain_name
-  certificate_arn = module.cert.certificate_arn
-  zone_id         = data.aws_route53_zone.selected.zone_id
-  # api_id      = module.api_gateway.api_id
-  # environment = var.environment
-}
+# module "cloud_front" {
+#   source          = "./cloud_front"
+#   domain_name     = var.domain_name
+#   certificate_arn = module.cert.certificate_arn
+#   zone_id         = data.aws_route53_zone.selected.zone_id
+#   # api_id      = module.api_gateway.api_id
+#   # environment = var.environment
+# }
 # module "route_53_records" {
 #   source      = "./route_53_records"
 #   api_id      = module.api_gateway.api_id

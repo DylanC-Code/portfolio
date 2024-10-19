@@ -1,4 +1,5 @@
 variable "bucket_name" {
+
   type        = string
   description = "Bucket name used for the AWS s3 bucket"
 }
@@ -25,5 +26,21 @@ variable "zone_id" {
   type = string
 }
 variable "s3_endpoint" {
+  type = string
+}
+
+variable "environment" {
+  type = string
+}
+
+variable "sub_domain" {
+  type = string
+}
+
+variable "domain_name" {
+  type = string
+}
+
+variable "certificate_arn" {
   type = string
 }

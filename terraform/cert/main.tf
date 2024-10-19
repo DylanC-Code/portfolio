@@ -12,10 +12,7 @@ resource "aws_acm_certificate" "cert" {
     create_before_destroy = true
   }
 
-  subject_alternative_names = compact([
-    for subdomain in var.subdomains :
-    subdomain != "" ? "${subdomain}.${var.domain_name}" : null
-  ])
+  subject_alternative_names = [var.sub_domain != "prod" ? "${var.sub_domain}${var.domain_name}" : var.domain_name]
 
   tags = {
     Name        = "Portfolio Cert"
