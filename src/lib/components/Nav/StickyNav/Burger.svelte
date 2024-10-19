@@ -30,8 +30,7 @@
 	$: animateBurger(visible);
 </script>
 
-<!-- svelte-ignore a11y-missing-attribute -->
-<a
+<button
 	class="absolute left-0 top-0 z-30 h-[60px] w-[60px] cursor-pointer overflow-hidden whitespace-nowrap rounded-full"
 >
 	<span
@@ -50,4 +49,4 @@
 		</span>
 	{/if}
 	<span bind:this={thirdSpanElement} aria-hidden="true" class="burger-span origin-top-right"></span>
-</a>
+</button>

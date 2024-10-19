@@ -37,8 +37,22 @@ resource "aws_s3_bucket_versioning" "versionning" {
 resource "aws_s3_object" "upload" {
   for_each = fileset("../build/", "*")
 
-  bucket       = aws_s3_bucket.bucket.id
-  key          = each.value
-  source       = "../build/${each.value}"
-  content_type = lookup(var.content_type_mapping, lower(regex("(\\.[^.]+)$", each.value)[0]), "binary/octet-stream")
+  bucket        = aws_s3_bucket.bucket.id
+  key           = each.value
+  source        = "../build/${each.value}"
+  content_type  = lookup(var.content_type_mapping, lower(regex("(\\.[^.]+)$", each.value)[0]), "binary/octet-stream")
+  cache_control = "max-age=31536000"
+}
+
+
+resource "aws_route53_record" "static_website_record" {
+  zone_id = var.zone_id
+  name    = var.bucket_name
+  type    = "A"
+
+  alias {
+    name                   = var.s3_endpoint
+    zone_id                = aws_s3_bucket.bucket.hosted_zone_id
+    evaluate_target_health = true
+  }
 }

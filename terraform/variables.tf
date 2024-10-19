@@ -25,3 +25,9 @@ variable "destination_email" {
 variable "ses_email_from" {
   type = string
 }
+
+variable "subdomains" {
+  description = "Sub domains list"
+  type        = list(string)
+  default     = ["dev", "staging", ""]
+}

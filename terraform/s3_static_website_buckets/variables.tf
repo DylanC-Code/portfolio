@@ -19,3 +19,11 @@ variable "content_type_mapping" {
     ".ico"  = "image/x-icon"
   }
 }
+
+
+variable "zone_id" {
+  type = string
+}
+variable "s3_endpoint" {
+  type = string
+}

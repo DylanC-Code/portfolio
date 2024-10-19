@@ -6,10 +6,10 @@ variable "zone_id" {
   type = string
 }
 
-variable "environment" {
-  type = string
+variable "subdomains" {
+  type = list(string)
 }
 
-variable "api_id" {
+variable "environment" {
   type = string
 }
