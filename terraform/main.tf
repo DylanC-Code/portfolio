@@ -14,14 +14,29 @@ module "cert" {
   environment = var.environment
 }
 
-module "s3_static_website_buckets" {
-  source          = "./s3_static_website_buckets"
+module "s3_dev" {
+  source      = "./modules/s3-static-website"
+  bucket_name = "dev.${var.domain_name}"
+}
+
+module "s3_prod" {
+  source      = "./modules/s3-static-website"
+  bucket_name = var.domain_name
+}
+
+module "cloud_front_prod" {
+  source          = "./modules/cloud-front"
+  s3_bucket_name  = var.domain_name
+  s3_bucket_id    = module.s3_prod.static_website_id
   zone_id         = data.aws_route53_zone.selected.zone_id
-  s3_endpoint     = "s3-website.${var.aws_region}.amazonaws.com"
-  environment     = var.environment
-  subdomains      = var.subdomains
-  domain_name     = var.domain_name
   certificate_arn = module.cert.certificate_arn
+}
+
+module "s3_cf_policy_prod" {
+  source                      = "./modules/s3-cf-policy"
+  bucket_id                   = module.s3_prod.static_website_id
+  bucket_arn                  = module.s3_prod.static_website_arn
+  cloudfront_distribution_arn = module.cloud_front_prod.cloudfront_distribution_arn
 }
 
 module "lambda_send_mail" {
