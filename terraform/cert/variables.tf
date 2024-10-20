@@ -6,8 +6,8 @@ variable "zone_id" {
   type = string
 }
 
-variable "sub_domain" {
-  type = string
+variable "subdomains" {
+  type = list(string)
 }
 
 variable "environment" {

@@ -13,13 +13,10 @@ variable "domain_name" {
   description = "Name of the AWS Route53 hosted zone domain"
 }
 
-# variable "subdomains" {
-#   description = "List of subdomains per environment"
-#   type        = list(string)
-#   default     = ["dev", "staging", ""]
-# }
-variable "sub_domain" {
-  type = string
+variable "subdomains" {
+  description = "List of subdomains per environment"
+  type        = list(string)
+  default     = ["dev", ""]
 }
 
 variable "destination_email" {

@@ -1,15 +1,19 @@
-resource "aws_s3_bucket" "website" {
-  bucket        = var.bucket_name
+resource "aws_s3_bucket" "websites" {
+  for_each = toset(var.subdomains)
+
+  bucket        = each.value != "" ? "${each.value}.${var.domain_name}" : var.domain_name
   force_destroy = true
 
   tags = {
-    Environment = var.environment
-    Name        = "Portfolio ${var.environment}"
+    Name        = "Portfolio ${each.value}"
+    Environment = each.value
   }
 }
 
 resource "aws_s3_bucket_versioning" "versionning" {
-  bucket = aws_s3_bucket.website.id
+  for_each = aws_s3_bucket.websites
+
+  bucket = each.value.id
 
   versioning_configuration {
     status = "Enabled"
@@ -17,7 +21,8 @@ resource "aws_s3_bucket_versioning" "versionning" {
 }
 
 resource "aws_s3_bucket_public_access_block" "public_access_block" {
-  bucket                  = aws_s3_bucket.website.id
+  for_each                = aws_s3_bucket.websites
+  bucket                  = each.value.id
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
@@ -26,7 +31,9 @@ resource "aws_s3_bucket_public_access_block" "public_access_block" {
 
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
-  bucket = aws_s3_bucket.website.id
+  for_each = aws_s3_bucket.websites
+
+  bucket = each.value.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -37,7 +44,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
           AWS = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
         }
         Action   = "s3:GetObject"
-        Resource = "${aws_s3_bucket.website.arn}/*"
+        Resource = "${each.value.arn}/*"
       }
     ]
   })
@@ -45,30 +52,34 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 
 # ==================================================
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "Access Identity for ${var.bucket_name}"
+  comment = "Access Identity for S3 portfolio"
 }
 
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
-    origin_id   = "s3-origin"
+    domain_name = aws_s3_bucket.websites[""].bucket_regional_domain_name
+    origin_id   = "s3-portfolio"
 
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
     }
   }
 
+
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Distribution pour ${var.bucket_name}"
+  comment             = "Distribution pour portfolio S3"
   default_root_object = "index.html"
 
-  aliases = [var.bucket_name]
+  aliases = [
+    for subdomain in var.subdomains :
+    subdomain != "" ? "${subdomain}.${var.domain_name}" : var.domain_name
+  ]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "s3-origin"
+    target_origin_id = "s3-portfolio"
 
     forwarded_values {
       query_string = false
@@ -96,14 +107,15 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   tags = {
-    Environment = var.environment
+    Name = "Distribution for portfolio S3"
   }
 }
 
 resource "aws_route53_record" "dns" {
-  zone_id = var.zone_id
-  name    = var.bucket_name
-  type    = "A"
+  for_each = aws_s3_bucket.websites
+  zone_id  = var.zone_id
+  name     = each.value.bucket
+  type     = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.cdn.domain_name

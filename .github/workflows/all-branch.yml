@@ -6,7 +6,6 @@ on:
       - feature/ci
       - develop
       - main
-      - staging
 
 jobs:
   build:
@@ -35,15 +34,13 @@ jobs:
         env:
           PUBLIC_SERVER_ADDRESS: ${{vars.PUBLIC_SERVER_ADDRESS}}
 
-      - name: Deploy Infra
-        run: |
-          if [ "${{github.ref}}" == "ref/heads/develop" ]; then
-            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.DEV_SUBDOMAIN}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
-          elif [ "${{github.ref}}" == "ref/heads/staging" ]; then
-            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.STAGING_SUBDOMAIN}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
-          elif [ "${{github.ref}}" == "ref/heads/main" ]; then
-            terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
-          fi
+      # - name: Deploy Infra
+      #   run: |
+      #     if [ "${{github.ref}}" == "ref/heads/develop" ]; then
+      #       terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'sub_domain=${{vars.DEV_SUBDOMAIN}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
+      #     elif [ "${{github.ref}}" == "ref/heads/main" ]; then
+      #       terraform apply -auto-approve -var 'domain=${{vars.DOMAIN_NAME}}' -var 'destination_email=${{vars.DESTINATION_EMAIL}}' -var 'ses_email_from=${{vars.SES_EMAIL_FROM}}'
+      #     fi
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -55,13 +52,6 @@ jobs:
       - name: Sync files to 'dev' S3
         if: github.ref == 'refs/heads/develop'
         run: aws s3 sync build s3://${{ vars.DEV_SUBDOMAIN }}${{ vars.DOMAIN_NAME }} --delete
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-      - name: Sync files to 'staging' S3
-        if: github.ref == 'refs/heads/staging'
-        run: aws s3 sync build s3://${{ vars.STAGING_SUBDOMAIN }}${{ vars.DOMAIN_NAME }} --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

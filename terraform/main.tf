@@ -1,9 +1,5 @@
 provider "aws" {}
 
-locals {
-  # full_domain = "${var.sub_domain}${var.domain_name}"
-  # subdomain = var.subdomains
-}
 
 data "aws_route53_zone" "selected" {
   name         = var.domain_name
@@ -14,17 +10,16 @@ module "cert" {
   source      = "./cert"
   domain_name = var.domain_name
   zone_id     = data.aws_route53_zone.selected.zone_id
-  sub_domain  = var.sub_domain
+  subdomains  = var.subdomains
   environment = var.environment
 }
 
 module "s3_static_website_buckets" {
   source          = "./s3_static_website_buckets"
-  bucket_name     = "${var.sub_domain}${var.domain_name}"
   zone_id         = data.aws_route53_zone.selected.zone_id
   s3_endpoint     = "s3-website.${var.aws_region}.amazonaws.com"
   environment     = var.environment
-  sub_domain      = var.sub_domain
+  subdomains      = var.subdomains
   domain_name     = var.domain_name
   certificate_arn = module.cert.certificate_arn
 }

@@ -1,9 +1,3 @@
-variable "bucket_name" {
-
-  type        = string
-  description = "Bucket name used for the AWS s3 bucket"
-}
-
 variable "content_type_mapping" {
   description = "Mapping of files extensions to MIME contents"
   type        = map(string)
@@ -25,6 +19,7 @@ variable "content_type_mapping" {
 variable "zone_id" {
   type = string
 }
+
 variable "s3_endpoint" {
   type = string
 }
@@ -33,8 +28,8 @@ variable "environment" {
   type = string
 }
 
-variable "sub_domain" {
-  type = string
+variable "subdomains" {
+  type = list(string)
 }
 
 variable "domain_name" {

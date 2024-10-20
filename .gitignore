@@ -59,7 +59,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-*.backend.hcl
+*backend.hcl
 
 gitconfig.sh
 
