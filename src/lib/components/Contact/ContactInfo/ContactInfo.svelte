@@ -15,8 +15,7 @@
 
 	const socialsMedias = [
 		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'fa-brands fa-linkedin-in' },
-		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'fa-brands fa-linkedin-in' },
-		{ url: 'https://www.linkedin.com/in/dylan-code/', logo: 'fa-brands fa-linkedin-in' }
+		{ url: 'https://github.com/DylanC-Code', logo: 'fa-brands fa-github' },
 	];
 </script>
 

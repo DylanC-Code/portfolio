@@ -61,13 +61,13 @@
 				{/each}
 			</ul>
 
-			<Button
+	<!--		<Button
 				text="preview"
 				elementClasses={{
 					icon: 'fa-solid fa-arrow-up-right-from-square',
 					button: `bg-${$selectedColor}`
 				}}
-			/>
+			/> -->
 		</div>
 	</div>
 </div>

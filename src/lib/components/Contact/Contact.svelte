@@ -11,7 +11,7 @@
 
 <PageTitle {titleSecondPart} {titleFirstPart} {subTitle} />
 
-<div class="mx-auto flex w-full max-w-[1170px] flex-wrap px-6 sm:px-[30px]">
+<div class="mx-auto flex w-full max-w-[1170px] flex-wrap px-6 sm:px-[30px] pb-8">
 	<ContactInfo />
 
 	<!-- <div class="w-full flex-[0_0_100%] px-6 md:flex-[0_0_66%]"> -->

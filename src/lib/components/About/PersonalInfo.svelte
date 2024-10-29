@@ -1,8 +1,8 @@
 <script>
 	import selectedColor from '$lib/stores/selectedColor';
-	import Button from '../Button/Button.svelte';
+	//import Button from '../Button/Button.svelte';
 
-	const downloadCVHandler = () => window.open('/cv.pdf', '_blank');
+	//const downloadCVHandler = () => window.open('/cv.pdf', '_blank');
 
 	const infosList1 = [
 		{ label: 'First Name', value: 'Dylan' },
@@ -75,14 +75,14 @@
 				<section
 					class="relative w-full max-w-full flex-[0_0_100%] px-4 md:text-center lg:text-left"
 				>
-					<Button
+<!--					<Button
 						onClickHandler={downloadCVHandler}
 						text="download my cv"
 						elementClasses={{
 							button: `mt-4 mb-9 sm:mt-8 sm:mb-0 bg-${$selectedColor}`,
 							icon: 'fa-solid fa-download'
 						}}
-					></Button>
+					></Button> -->
 				</section>
 			</div>
 		</div>
